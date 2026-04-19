@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import type { IntroPhase } from "./IntroStage";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -56,6 +57,12 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const indexRef = useRef(0);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const refCode = (() => {
+    const raw = searchParams?.get("ref") ?? "";
+    return /^[A-Z0-9]{8}$/.test(raw) ? raw : null;
+  })();
 
   const variant = COPY[activeRole];
 
@@ -100,17 +107,23 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, role }),
+        body: JSON.stringify({ email, role, ref: refCode }),
       });
-      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: string;
+        code?: string;
+      };
       if (!res.ok) {
         setStatus("error");
         setMessage(data.error ?? "Something went wrong. Try again.");
         return;
       }
       setStatus("success");
-      setMessage("You're on the list. We'll be in touch.");
+      setMessage("You're on the list. Taking you to your rank…");
       setEmail("");
+      if (data.code) {
+        router.push(`/waitlist/${data.code}`);
+      }
     } catch {
       setStatus("error");
       setMessage("Network error. Try again.");
