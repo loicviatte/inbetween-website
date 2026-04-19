@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import { IntroStage } from "@/components/IntroStage";
 import { ContactModal } from "@/components/ContactModal";
@@ -20,7 +21,9 @@ export default function Home() {
       </header>
 
       <main>
-        <IntroStage />
+        <Suspense fallback={null}>
+          <IntroStage />
+        </Suspense>
       </main>
 
       <footer>
