@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Color — brand</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #0A0A0A; overflow: hidden; font-family: var(--font-sans); color: #fff; }
+  .wrap { padding: 14px; box-sizing: border-box; height: 260px; display: flex; flex-direction: column; gap: 8px; }
+  .row { display: grid; gap: 8px; flex: 1; }
+  .row.gold { grid-template-columns: 1.3fr 1fr 1fr 1fr; }
+  .row.blue { grid-template-columns: 1.3fr 1fr 1fr 1fr; }
+  .sw { border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .sw .name { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; opacity: .75; }
+  .sw .hex { font-family: var(--font-mono); font-size: 11px; opacity: .85; }
+  .sw .label { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+  .black { background: #000; color: #fff; border: 1px solid rgba(255,255,255,.08); }
+  .g500 { background: #E8B530; color: #1a1a1a; }
+  .g400 { background: #F0C24A; color: #1a1a1a; }
+  .g300 { background: #F6D27A; color: #1a1a1a; }
+  .cream { background: #F7F6F3; color: #1a1a1a; }
+  .b700 { background: #1B2A44; color: #F7F6F3; }
+  .b600 { background: #223657; color: #F7F6F3; }
+  .b500 { background: #2E4670; color: #F7F6F3; }
+  .b400 { background: #4A6A9A; color: #fff; }
+  .heading { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-3); font-weight: 500; margin: 0 0 2px; display: flex; align-items: center; gap: 8px; }
+  .heading::before { content: ""; width: 16px; height: 1px; background: currentColor; }
+  .heading em { font-style: normal; color: var(--fg-2); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0; text-transform: none; margin-left: auto; }
+</style></head><body>
+<div class="wrap">
+  <div class="heading">Primary — Gold</div>
+  <div class="row gold">
+    <div class="sw black"><div class="name">Canvas</div><div class="label">Black</div><div class="hex">#000000</div></div>
+    <div class="sw g500"><div class="name">Deep</div><div class="label">Gold 500</div><div class="hex">#E8B530</div></div>
+    <div class="sw g400"><div class="name">Primary</div><div class="label">Gold 400</div><div class="hex">#F0C24A</div></div>
+    <div class="sw g300"><div class="name">Light</div><div class="label">Gold 300</div><div class="hex">#F6D27A</div></div>
+  </div>
+  <div class="heading">Complementary — Ink Blue <em>use sparingly, never next to gold</em></div>
+  <div class="row blue">
+    <div class="sw cream"><div class="name">Paper</div><div class="label">Cream</div><div class="hex">#F7F6F3</div></div>
+    <div class="sw b700"><div class="name">Deep</div><div class="label">Blue 700</div><div class="hex">#1B2A44</div></div>
+    <div class="sw b500"><div class="name">Primary</div><div class="label">Blue 500</div><div class="hex">#2E4670</div></div>
+    <div class="sw b400"><div class="name">Lifted</div><div class="label">Blue 400</div><div class="hex">#4A6A9A</div></div>
+  </div>
+</div>
+</body></html>

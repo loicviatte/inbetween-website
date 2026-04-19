@@ -1,0 +1,34 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>probe2</title></head>
+<body style="background:#000;color:#fff;font-family:monospace;">
+<iframe id="f" src="../ui_kits/app/index.html?v=9" style="width: 420px; height: 900px; border: 0;"></iframe>
+<pre id="out" style="padding: 20px; background: #111; white-space: pre-wrap;"></pre>
+<script>
+setTimeout(() => {
+  const f = document.getElementById('f');
+  const doc = f.contentDocument;
+  const all = doc.querySelectorAll('div');
+  let app;
+  for (const d of all) {
+    // App's root container — has the cream gradient background
+    if (d.style.background && d.style.background.includes('radial-gradient') && d.style.paddingTop) {
+      app = d;
+      break;
+    }
+  }
+  let out = `app node found: ${!!app}\n`;
+  if (app) {
+    out += `app scrollHeight: ${app.scrollHeight}\n`;
+    out += `app clientHeight: ${app.clientHeight}\n`;
+    // inspect children
+    const kids = [...app.children].filter(c => c.tagName !== 'STYLE');
+    kids.forEach((k, i) => {
+      const r = k.getBoundingClientRect();
+      const txt = (k.textContent || '').slice(0, 40).replace(/\s+/g, ' ');
+      out += `[${i}] h=${Math.round(r.height)} "${txt}"\n`;
+    });
+  }
+  document.getElementById('out').textContent = out;
+}, 2000);
+</script>
+</body></html>

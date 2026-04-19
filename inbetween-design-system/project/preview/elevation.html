@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Elevation</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; color: #fff; font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 22px; box-sizing: border-box; height: 220px; }
+  .tile { background: #141414; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .t1 { box-shadow: 0 1px 2px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.06); }
+  .t2 { box-shadow: 0 8px 24px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.08); }
+  .t3 { box-shadow: 0 24px 60px rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.1); }
+  .t4 { box-shadow: 0 0 0 1px rgba(240,194,74,.35), 0 12px 40px -10px rgba(240,194,74,.35); border: 1px solid rgba(240,194,74,.35); }
+  .n { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
+  .v { font-family: var(--font-mono); font-size: 11px; color: var(--fg-1); }
+</style></head><body>
+<div class="grid">
+  <div class="tile t1"><div class="n">sm</div><div class="v">subtle lift</div></div>
+  <div class="tile t2"><div class="n">md</div><div class="v">card</div></div>
+  <div class="tile t3"><div class="n">lg</div><div class="v">modal</div></div>
+  <div class="tile t4"><div class="n">gold</div><div class="v">primary CTA</div></div>
+</div>
+</body></html>

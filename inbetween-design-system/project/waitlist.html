@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InBetween — Join the Waitlist</title>
+  <link rel="stylesheet" href="colors_and_type.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: #000;
+      color: #F7F6F3;
+      font-family: "TT Travels Next", ui-sans-serif, system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: radial-gradient(130% 100% at 80% 115%, #6B5420 0%, #3A2F14 30%, #1A1A1A 65%, #000 90%);
+    }
+
+    /* Grain overlay */
+    .container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grain-url, none);
+      background-size: 220px;
+      opacity: 0.35;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      z-index: 10;
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #F7F6F3;
+      letter-spacing: -0.01em;
+    }
+
+    .logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    .contact-link {
+      font-size: 14px;
+      color: rgba(247,246,243,0.7);
+      text-decoration: none;
+      transition: color 150ms cubic-bezier(.2,.7,.2,1);
+    }
+    .contact-link:hover { color: #E8B530; }
+
+    /* Hero section */
+    .hero {
+      position: relative;
+      z-index: 5;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      white-space: pre-line;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(247,246,243,0.75);
+      letter-spacing: 0.005em;
+      line-height: 1.6;
+      margin-bottom: 48px;
+      max-width: 550px;
+      white-space: pre-line;
+    }
+
+    /* Email form */
+    .waitlist-form {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .email-input {
+      flex: 1;
+      height: 56px;
+      padding: 0 24px;
+      background: rgba(247,246,243,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 15px;
+      color: #F7F6F3;
+      transition: all 150ms cubic-bezier(.2,.7,.2,1);
+    }
+    .email-input::placeholder { color: rgba(247,246,243,0.4); }
+    .email-input:focus {
+      outline: none;
+      background: rgba(247,246,243,0.12);
+      border-color: #E8B530;
+    }
+
+    .submit-btn {
+      height: 56px;
+      padding: 0 40px;
+      background: #E8B530;
+      color: #0A0A0A;
+      border: 0;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: all 150ms cubic-bezier(.2,.7,.2,1);
+      box-shadow: 0 0 0 1px rgba(232,181,48,.35), 0 4px 16px -4px rgba(232,181,48,.4);
+    }
+    .submit-btn:hover {
+      background: #F0C24A;
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(232,181,48,.45), 0 6px 20px -4px rgba(232,181,48,.5);
+    }
+
+    /* Avatars */
+    .social-proof {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(247,246,243,0.6);
+    }
+
+    .avatars {
+      display: flex;
+      margin-left: -8px;
+    }
+    .avatars img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      margin-left: -8px;
+    }
+
+    /* Phone mockup */
+    .phone-container {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      padding: 60px 48px 120px;
+      perspective: 1200px;
+    }
+
+    .phone-frame {
+      position: relative;
+      max-width: 380px;
+      width: 100%;
+      transform: rotateY(-12deg) rotateX(2deg);
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .phone-frame:hover {
+      transform: rotateY(-8deg) rotateX(1deg) translateY(-8px);
+    }
+
+    .phone-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 
+        0 50px 120px rgba(0,0,0,0.7), 
+        -20px 40px 80px rgba(232, 181, 48, 0.15);
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 10;
+      padding: 32px 48px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(247,246,243,0.4);
+    }
+
+    @media (max-width: 768px) {
+      header, .hero, .phone-container, footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .hero-title {
+        font-size: 40px;
+      }
+
+      .waitlist-form {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .email-input,
+      .submit-btn {
+        width: 100%;
+      }
+
+      .phone-frame {
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="uploads/inbetweenlogos_icon_lightgradient_bg.png" alt="InBetween">
+        <span>InBetween</span>
+      </div>
+      <a href="mailto:hello@inbetween.app" class="contact-link">Contact</a>
+    </header>
+
+    <section class="hero">
+      <h1 class="hero-title" style="font-size: 60px; color: rgb(255, 255, 255); margin-bottom: 48px; line-height: 1.1;">Your coach <span style="font-style: italic; font-weight: 300;">teaches.</span>
+<span style="display: block;">We capture every <span id="rotating-word" style="font-weight: 800; letter-spacing: -0.04em; display: inline-block; width: 450px; text-align: left;">correction.</span></span>
+You never <span style="font-weight: 300; letter-spacing: 0.02em; color: #F0C24A;">forget.</span></h1>
+      <p class="hero-subtitle" style="margin: 0 0 48px 0">Get personalised focus points after every lesson so you always know exactly what to train.</p>
+
+      <form class="waitlist-form" onsubmit="handleSubmit(event)">
+        <input 
+          type="email" 
+          class="email-input" 
+          placeholder="Email address" 
+          required
+        />
+        <button type="submit" class="submit-btn">Join the waitlist</button>
+      </form>
+
+      <div class="social-proof">
+        <div class="avatars">
+          <img src="https://i.pravatar.cc/64?img=1" alt="User">
+          <img src="https://i.pravatar.cc/64?img=5" alt="User">
+          <img src="https://i.pravatar.cc/64?img=9" alt="User">
+        </div>
+        <span>Join coaches and students already on the waitlist</span>
+      </div>
+    </section>
+
+    <div class="phone-container">
+      <div class="phone-frame">
+        <img src="uploads/145shots_so_cropped.png" alt="InBetween App">
+      </div>
+    </div>
+
+    <footer>
+      © InBetween 2026
+    </footer>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input').value;
+      alert(`Thanks for joining! We'll reach out to ${email} soon.`);
+      e.target.reset();
+    }
+
+    // Rotating word animation
+    const words = ['correction.', 'input.', 'tips.', 'metaphors.', 'comment.', 'drill.', 'advice.'];
+    let currentIndex = 0;
+    const wordElement = document.getElementById('rotating-word');
+
+    function rotateWord() {
+      // Fade out
+      wordElement.style.opacity = '0';
+      wordElement.style.transform = 'translateY(-10px)';
+      
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % words.length;
+        wordElement.textContent = words[currentIndex];
+        
+        // Fade in
+        wordElement.style.opacity = '1';
+        wordElement.style.transform = 'translateY(0)';
+      }, 300);
+    }
+
+    // Start animation after page load
+    setTimeout(() => {
+      wordElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      setInterval(rotateWord, 2000);
+    }, 1000);
+  </script>
+</body>
+</html>

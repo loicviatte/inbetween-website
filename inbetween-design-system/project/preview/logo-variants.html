@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Logo — variants</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #0A0A0A; overflow: hidden; font-family: var(--font-sans); }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 16px; height: 170px; box-sizing: border-box; }
+  .cell { border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+  .cell img { max-width: 85%; max-height: 72%; display: block; }
+  .cell::after { content: attr(data-label); position: absolute; left: 8px; bottom: 6px; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 500; }
+  .cell.light::after { color: rgba(0,0,0,.55); }
+  .cell.black { background: #000; }
+  .cell.white { background: #F7F6F3; }
+  .cell.checker {
+    background-color: #1A1A1A;
+    background-image:
+      linear-gradient(45deg, rgba(255,255,255,.05) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255,255,255,.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255,255,255,.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255,255,255,.05) 75%);
+    background-size: 14px 14px;
+    background-position: 0 0, 0 7px, 7px -7px, -7px 0;
+  }
+  .cell.grad-dark { background: radial-gradient(130% 100% at 80% 115%, #6B5420 0%, #3A2F14 30%, #1A1A1A 65%, #000 90%); }
+</style></head><body>
+<div class="row">
+  <div class="cell checker" data-label="Transparent"><img src="../assets/logo-icon-transparent.png"></div>
+  <div class="cell black" data-label="Black"><img src="../assets/logo-icon-transparent.png"></div>
+  <div class="cell white light" data-label="Cream"><img src="../assets/logo-icon-transparent.png"></div>
+  <div class="cell grad-dark" data-label="Dark gradient"><img src="../assets/logo-icon-transparent.png"></div>
+</div>
+</body></html>

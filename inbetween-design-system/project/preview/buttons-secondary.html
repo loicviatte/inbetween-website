@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Buttons — secondary</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; color: #fff; font-family: var(--font-sans); }
+  .card { padding: 22px 28px; display: flex; flex-direction: column; gap: 14px; height: 210px; box-sizing: border-box; justify-content: center; }
+  .row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .label { font-family: var(--font-mono); font-size: 10.5px; color: var(--fg-3); letter-spacing: .04em; text-transform: uppercase; width: 68px; flex: 0 0 68px; }
+  .btn { font-family: var(--font-sans); font-weight: 500; font-size: 14px; padding: 10px 19px; border-radius: 8px; cursor: pointer; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.2); transition: all 120ms cubic-bezier(.2,.7,.2,1); }
+  .btn-secondary:hover { border-color: #F0C24A; color: #F0C24A; }
+  .btn-ghost { border: 0; color: var(--fg-2); padding: 10px 14px; }
+  .btn-ghost:hover { color: #F0C24A; }
+  .btn-link { background: transparent; border: 0; padding: 10px 0; color: #F0C24A; font-weight: 500; display: inline-flex; gap: 8px; align-items: center; }
+  .btn-link::after { content: "→"; }
+  .btn-danger { background: transparent; border: 1px solid rgba(208,106,90,.45); color: #D06A5A; }
+  .btn-danger:hover { background: rgba(208,106,90,.1); border-color: #D06A5A; }
+</style></head><body>
+<div class="card">
+  <div class="row"><div class="label">Secondary</div><button class="btn btn-secondary">Learn more</button><button class="btn btn-secondary" style="border-color:#F0C24A;color:#F0C24A">Learn more</button></div>
+  <div class="row"><div class="label">Ghost</div><button class="btn btn-ghost">Skip</button><button class="btn btn-link">See how it works</button></div>
+  <div class="row"><div class="label">Danger</div><button class="btn btn-danger">Delete</button></div>
+</div>
+</body></html>

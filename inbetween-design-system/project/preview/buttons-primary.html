@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Buttons — primary</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; color: #fff; font-family: var(--font-sans); }
+  .card { padding: 22px 28px; display: flex; flex-direction: column; gap: 14px; height: 230px; box-sizing: border-box; justify-content: center; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .label { font-family: var(--font-mono); font-size: 10.5px; color: var(--fg-3); letter-spacing: .04em; text-transform: uppercase; width: 76px; flex: 0 0 76px; }
+  .btn { font-family: var(--font-sans); font-weight: 600; font-size: 14px; border: 0; padding: 11px 20px; border-radius: 8px; cursor: pointer; transition: all 120ms cubic-bezier(.2,.7,.2,1); letter-spacing: -.005em; display: inline-flex; align-items: center; gap: 8px; color: #F7F6F3; }
+  .btn svg { width: 14px; height: 14px; }
+  .default  { background: #E8B530; }
+  .hover    { background: #C99A1E; box-shadow: 0 0 0 1px rgba(232,181,48,.35), 0 12px 40px -10px rgba(232,181,48,.45); }
+  .press    { background: #A87F14; transform: scale(.97); }
+  .disabled { background: #E8B530; opacity: .4; }
+  .note { font-family: var(--font-mono); font-size: 10.5px; color: var(--fg-3); }
+  .note b { color: var(--fg-2); font-weight: 400; }
+</style></head><body>
+<div class="card">
+  <div class="row">
+    <div class="label">Default</div>
+    <button class="btn default">Get started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+    <button class="btn hover">Get started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+    <button class="btn press">Get started</button>
+    <button class="btn disabled">Get started</button>
+  </div>
+  <div class="row">
+    <div class="label">Swatches</div>
+    <div style="display:flex;gap:6px;align-items:center;font-family:var(--font-mono);font-size:10.5px;color:var(--fg-3)">
+      <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:3px;background:#E8B530"></span>#E8B530 default</span>
+      <span style="opacity:.4">·</span>
+      <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:3px;background:#C99A1E"></span>#C99A1E hover</span>
+      <span style="opacity:.4">·</span>
+      <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:3px;background:#A87F14"></span>#A87F14 press</span>
+    </div>
+  </div>
+  <div class="row"><div class="label"></div><div class="note"><b>Cream text on gold 500.</b> Gold <em>darkens</em> on hover/press so contrast improves with interaction. Contrast: ~3.4:1 → 4.9:1 → 6.7:1.</div></div>
+</div>
+</body></html>

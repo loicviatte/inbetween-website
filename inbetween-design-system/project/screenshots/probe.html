@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>probe</title></head>
+<body>
+<iframe id="f" src="../ui_kits/app/index.html?v=11" style="width: 500px; height: 920px; border: 0; background: red;"></iframe>
+<pre id="iframe-content" style="color: white; background: #111; padding: 10px; font-family: monospace;"></pre>
+<div id="out" style="font-family: monospace; padding: 20px; color: #fff; background: #000;"></div>
+<script>
+setTimeout(() => {
+  const f = document.getElementById('f');
+  const doc = f.contentDocument;
+  const all = doc.querySelectorAll('div');
+  let dev, scroller;
+  for (const d of all) {
+    if (d.style.borderRadius === '48px') dev = d;
+    if (d.style.overflow === 'auto') scroller = d;
+  }
+  document.getElementById('out').innerHTML = `
+    device height: ${dev?.offsetHeight}px<br>
+    scroller clientHeight: ${scroller?.clientHeight}px<br>
+    scroller scrollHeight: ${scroller?.scrollHeight}px<br>
+    overflow: ${scroller ? scroller.scrollHeight - scroller.clientHeight : 'n/a'}px
+  `;
+}, 1500);
+</script>
+</body></html>

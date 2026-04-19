@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Color — semantic</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #0A0A0A; overflow: hidden; font-family: var(--font-sans); color: #fff; padding: 18px; box-sizing: border-box; height: 100%; }
+  .row { display: flex; flex-direction: column; gap: 10px; }
+  .item { display: grid; grid-template-columns: 90px 1fr 100px; align-items: center; gap: 14px; padding: 10px 14px; background: #141414; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; }
+  .chip { width: 100%; height: 28px; border-radius: 6px; position: relative; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; }
+  .name { font-size: 13px; font-weight: 500; color: #fff; }
+  .name span { color: var(--fg-2); font-weight: 400; font-family: var(--font-mono); font-size: 11px; margin-left: 6px; }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); text-align: right; }
+</style></head><body>
+  <div class="row">
+    <div class="item"><div class="chip" style="background:#7FB77E;color:#0a1a0a">Success</div><div class="name">Success <span>--success</span></div><div class="hex">#7FB77E</div></div>
+    <div class="item"><div class="chip" style="background:#D68A3C;color:#1a0e00">Warning</div><div class="name">Warning <span>--warning</span></div><div class="hex">#D68A3C</div></div>
+    <div class="item"><div class="chip" style="background:#D06A5A;color:#fff">Danger</div><div class="name">Danger <span>--danger</span></div><div class="hex">#D06A5A</div></div>
+    <div class="item"><div class="chip" style="background:#6FA8C8;color:#0a1523">Info</div><div class="name">Info <span>--info</span></div><div class="hex">#6FA8C8</div></div>
+  </div>
+</body></html>

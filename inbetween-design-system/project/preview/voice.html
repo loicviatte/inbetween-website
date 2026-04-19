@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Voice</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; color: #fff; font-family: var(--font-sans); padding: 22px 28px; box-sizing: border-box; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  h4 { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: .01em; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+  h4.yes { color: #F0C24A; }
+  h4.no { color: #D06A5A; }
+  h4 span { font-family: var(--font-mono); font-size: 10px; font-weight: 500; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { font-size: 13.5px; line-height: 1.5; padding: 5px 0; color: var(--fg-2); border-bottom: 1px solid rgba(255,255,255,.04); }
+  li:last-child { border-bottom: 0; }
+  li strong { color: #fff; font-weight: 400; }
+  .no li strong { color: rgba(255,255,255,.5); text-decoration: line-through; text-decoration-color: rgba(208,106,90,.5); }
+</style></head><body>
+<div class="grid">
+  <div>
+    <h4 class="yes"><span>✓ Yes</span></h4>
+    <ul>
+      <li><strong>Built for the space between.</strong></li>
+      <li><strong>Handoffs happen here.</strong></li>
+      <li><strong>Request access</strong></li>
+      <li><strong>Nothing here yet.</strong></li>
+    </ul>
+  </div>
+  <div class="no">
+    <h4 class="no"><span>✗ No</span></h4>
+    <ul>
+      <li><strong>🚀 Revolutionize your workflow!</strong></li>
+      <li><strong>Best-in-class collaboration suite</strong></li>
+      <li><strong>SIGN UP NOW!!</strong></li>
+      <li><strong>Oops! Looks like something went wrong 😅</strong></li>
+    </ul>
+  </div>
+</div>
+</body></html>
