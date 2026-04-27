@@ -53,6 +53,11 @@ export function IntroStage() {
     >
       <WaitlistHero phase={phase} />
       <PhoneTransformation phase={phase} />
+      {phase >= 1 && phase < 4 && (
+        <div className="skip-hint" aria-hidden="true">
+          Tap to skip
+        </div>
+      )}
       <style>{`
         .intro-stage {
           transition: opacity ${FADE_MS}ms ease;
@@ -60,6 +65,26 @@ export function IntroStage() {
         .intro-stage[data-fading="true"] {
           opacity: 0;
           pointer-events: none;
+        }
+        .skip-hint {
+          position: fixed;
+          bottom: 88px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: rgba(247, 246, 243, 0.45);
+          pointer-events: none;
+          z-index: 20;
+          animation: skip-pulse 1.8s ease-in-out infinite;
+        }
+        @keyframes skip-pulse {
+          0%, 100% { opacity: 0.35; }
+          50% { opacity: 0.75; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .skip-hint { animation: none; opacity: 0.5; }
         }
       `}</style>
     </div>
