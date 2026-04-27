@@ -41,7 +41,7 @@ export async function POST(request: Request) {
 
   try {
     const { error } = await resend.emails.send({
-      from: "InBetween Contact <no-reply@useinbetween.com>",
+      from: "InBetween <hello@useinbetween.com>",
       to: "hello@useinbetween.com",
       replyTo: email,
       subject: `New message from ${name}`,
