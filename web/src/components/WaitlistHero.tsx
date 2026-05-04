@@ -121,6 +121,13 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
       setStatus("success");
       setMessage("You're on the list. Taking you to your rank…");
       setEmail("");
+      // Meta Pixel: track waitlist signup as a Lead
+      if (typeof window !== "undefined" && typeof window.fbq === "function") {
+        window.fbq("track", "Lead", {
+          content_name: "waitlist_signup",
+          content_category: role,
+        });
+      }
       if (data.code) {
         router.push(`/waitlist/${data.code}`);
       }
