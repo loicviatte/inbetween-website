@@ -45,6 +45,11 @@ export default function Home() {
             </svg>
           </a>
         </div>
+        <nav className="footer-legal" aria-label="Legal">
+          <a href="/terms">Terms</a>
+          <span aria-hidden="true">·</span>
+          <a href="/privacy">Privacy</a>
+        </nav>
         © InBetween 2026
       </footer>
 
@@ -127,6 +132,24 @@ export default function Home() {
         }
         .footer-social a:hover {
           color: var(--gold-500);
+        }
+
+        .footer-legal {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-size: 13px;
+        }
+        .footer-legal a {
+          color: rgba(247, 246, 243, 0.5);
+          text-decoration: none;
+          transition: color 150ms var(--ease-out);
+        }
+        .footer-legal a:hover {
+          color: var(--gold-500);
+        }
+        .footer-legal span {
+          color: rgba(247, 246, 243, 0.25);
         }
 
         @media (max-width: 768px) {
