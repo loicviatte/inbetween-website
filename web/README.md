@@ -45,10 +45,10 @@ RESEND_AUDIENCE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 - `src/components/WaitlistHero.tsx` — hero, rotating word, form
 - `src/components/PhoneMockup.tsx` — 3D-tilted iPhone mockup with glow
 - `src/app/api/waitlist/route.ts` — POST endpoint that writes to Resend audience
-- `src/app/fonts/` — TT Travels Next (Trial — replace with licensed files before production)
-- `public/images/` — logo + app screenshot
+- `src/app/layout.tsx` — loads the Syne font (via `next/font/google`) + site metadata
+- `public/images/` — logo lockup + iPhone mockup
 
 ## Notes
 
-- Fonts are **Trial** versions from the handoff — confirm the TT Travels Next license before production launch.
+- Typeface is **Syne** (Google Fonts, OFL — free for commercial use), self-hosted at build time by `next/font`.
 - `hello@inbetween.app` in the header is a placeholder — update in `src/app/page.tsx`.

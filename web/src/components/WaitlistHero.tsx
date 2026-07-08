@@ -148,7 +148,7 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
         <span className="line line-1">
           <span className="line-content">
             <span className="part">{variant.line1.prefix}</span>{" "}
-            <span className="part italic">{variant.line1.accent}</span>
+            <span className="part accent">{variant.line1.accent}</span>
           </span>
         </span>
         <span className="line line-2">
@@ -263,7 +263,7 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
 
         .hero-title {
           position: relative;
-          font-weight: 600;
+          font-weight: 700;
           line-height: 1.08;
           letter-spacing: -0.025em;
           margin: 0 0 28px;
@@ -384,13 +384,13 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
           filter: blur(0);
         }
 
-        .hero-title .italic {
-          font-style: italic;
-          font-weight: 300;
+        /* Accent words — upright, lighter weight than the bold title, colour for emphasis */
+        .hero-title .accent {
+          font-weight: 400;
           color: rgba(255, 255, 255, 0.85);
         }
         .hero-title .forget {
-          font-weight: 300;
+          font-weight: 400;
           letter-spacing: 0.02em;
           color: var(--gold-400);
         }

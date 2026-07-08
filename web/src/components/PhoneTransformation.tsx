@@ -130,7 +130,7 @@ export function PhoneTransformation({ phase }: { phase: IntroPhase }) {
       </div>
 
       <div className="phone-center">
-        <PhoneMockup src="/images/app-screen.png" alt="InBetween app" />
+        <PhoneMockup src="/images/iphone_mockup_empty.png" alt="InBetween" />
       </div>
 
       <style>{`
