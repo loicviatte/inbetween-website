@@ -74,8 +74,9 @@ export function Nav() {
         <div className="nav-inner">
           <a href="/" className="brand" aria-label="InBetween — home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo-icon.png" alt="" />
-            <span>InBetween</span>
+            <img className="brand-white" src="/images/icon_name_white.png" alt="InBetween" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="brand-black" src="/images/icon_name_black.png" alt="" aria-hidden="true" />
           </a>
           <ul className="nav-links">
             {LINKS.map((l) => (

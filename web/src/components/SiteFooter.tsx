@@ -21,8 +21,7 @@ export function SiteFooter() {
           <div className="footer-brand">
             <a href="/" className="brand" aria-label="InBetween — home">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo-icon.png" alt="" />
-              <span>InBetween</span>
+              <img className="brand-white" src="/images/icon_name_white.png" alt="InBetween" />
             </a>
             <p>
               Your coach teaches. We capture every correction. You never forget.

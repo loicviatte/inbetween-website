@@ -167,15 +167,16 @@ html { scroll-behavior: smooth; scroll-padding-top: 96px; }
   height: 80px; max-width: var(--container-max); margin: 0 auto;
   padding: 0 var(--container-pad);
 }
-.mkt .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
-.mkt .brand img { height: 26px; width: auto; display: block; }
-.mkt .brand span {
-  font-size: 20px; font-weight: var(--fw-demibold);
-  letter-spacing: -0.01em; color: var(--ink-0);
-  transition: color var(--dur-base) var(--ease-out);
-}
-.mkt .nav.scrolled .brand span,
-.mkt .nav.menu-open .brand span { color: var(--ink-1000); }
+.mkt .brand { display: flex; align-items: center; text-decoration: none; }
+.mkt .brand img { height: 24px; width: auto; }
+/* white lockup over the dark hero; black lockup once the nav turns light
+   (scrolled) or the full-screen mobile menu is open */
+.mkt .brand-white { display: block; }
+.mkt .brand-black { display: none; }
+.mkt .nav.scrolled .brand-white,
+.mkt .nav.menu-open .brand-white { display: none; }
+.mkt .nav.scrolled .brand-black,
+.mkt .nav.menu-open .brand-black { display: block; }
 
 .mkt .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; margin: 0; padding: 0; }
 .mkt .nav-links a, .mkt .nav-links button {
@@ -309,7 +310,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 @media (max-width: 600px) {
   .mkt { --container-pad: 20px; }
   .mkt .nav-inner { height: 66px; }
-  .mkt .brand span { font-size: 18px; }
+  .mkt .brand img { height: 22px; }
   .mkt .btn { height: 50px; }
   .mkt .section { padding: clamp(64px, 16vw, 96px) 0; }
   .mkt .section--tight { padding: clamp(48px, 12vw, 72px) 0; }
