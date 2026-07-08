@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { PhoneMockup } from "./PhoneMockup";
+import { HeroPhone } from "./marketing/HeroPhone";
 import type { IntroPhase } from "./IntroStage";
 
 type Track = {
@@ -130,7 +130,7 @@ export function PhoneTransformation({ phase }: { phase: IntroPhase }) {
       </div>
 
       <div className="phone-center">
-        <PhoneMockup src="/images/iphone_mockup_empty.png" alt="InBetween" />
+        <HeroPhone />
       </div>
 
       <style>{`
