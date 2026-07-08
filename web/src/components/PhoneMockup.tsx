@@ -8,8 +8,8 @@ export function PhoneMockup({ src, alt }: { src: string; alt: string }) {
         <Image
           src={src}
           alt={alt}
-          width={720}
-          height={1440}
+          width={2500}
+          height={4400}
           sizes="(max-width: 768px) 280px, 380px"
           priority
           className="phone-img"

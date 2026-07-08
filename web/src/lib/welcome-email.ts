@@ -47,7 +47,7 @@ export function renderWelcomeEmail(params: {
 <meta name="color-scheme" content="dark">
 <title>Welcome to InBetween</title>
 <style>
-body, table, td, a, p, h1, h2, h3, span { font-family: 'TT Travels Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif !important; }
+body, table, td, a, p, h1, h2, h3, span { font-family: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif !important; }
 a { color: #F0C24A; text-decoration: none; }
 .btn:hover { background: #F0C24A !important; }
 @media only screen and (max-width: 600px) {

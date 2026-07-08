@@ -9,13 +9,12 @@ export default function Home() {
       <header className="site-header">
         <div className="logo">
           <Image
-            src="/images/logo-transparent.png"
+            src="/images/logo-lockup-white.png"
             alt="InBetween"
-            width={32}
-            height={32}
+            width={3389}
+            height={463}
             priority
           />
-          <span>InBetween</span>
         </div>
         <ContactModal />
       </header>
@@ -96,15 +95,14 @@ export default function Home() {
           align-items: center;
           gap: 10px;
           font-size: 20px;
-          font-weight: 600;
+          font-weight: 700;
           color: var(--ink-50);
           letter-spacing: -0.01em;
         }
 
         .logo img {
-          height: 28px;
+          height: 26px;
           width: auto;
-          border-radius: 6px;
         }
 
         footer {

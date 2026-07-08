@@ -1,24 +1,18 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import localFont from "next/font/local";
+import { Syne } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const META_PIXEL_ID = "1289816079954533";
 
-const ttTravelsNext = localFont({
-  variable: "--font-sans",
+// Syne — variable font (weights 400–800). Regular (400) for body,
+// Bold (700) for display. Self-hosted at build time by next/font.
+const syne = Syne({
+  subsets: ["latin"],
   display: "swap",
-  src: [
-    { path: "./fonts/TTTravelsNext-Light.ttf", weight: "300", style: "normal" },
-    { path: "./fonts/TTTravelsNext-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./fonts/TTTravelsNext-Italic.ttf", weight: "400", style: "italic" },
-    { path: "./fonts/TTTravelsNext-Medium.ttf", weight: "500", style: "normal" },
-    { path: "./fonts/TTTravelsNext-DemiBold.ttf", weight: "600", style: "normal" },
-    { path: "./fonts/TTTravelsNext-DemiBoldItalic.ttf", weight: "600", style: "italic" },
-    { path: "./fonts/TTTravelsNext-ExtraBold.ttf", weight: "800", style: "normal" },
-  ],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +26,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={ttTravelsNext.variable}>
+    <html lang="en" className={syne.variable}>
       <body suppressHydrationWarning>
         {children}
         <Analytics />

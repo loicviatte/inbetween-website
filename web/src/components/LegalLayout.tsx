@@ -13,13 +13,12 @@ export function LegalLayout({ title, effectiveDate, children }: LegalLayoutProps
       <header className="site-header">
         <Link href="/" className="logo" aria-label="InBetween — home">
           <Image
-            src="/images/logo-transparent.png"
+            src="/images/logo-lockup-white.png"
             alt="InBetween"
-            width={32}
-            height={32}
+            width={3389}
+            height={463}
             priority
           />
-          <span>InBetween</span>
         </Link>
       </header>
 
@@ -81,15 +80,14 @@ export function LegalLayout({ title, effectiveDate, children }: LegalLayoutProps
           align-items: center;
           gap: 10px;
           font-size: 20px;
-          font-weight: 600;
+          font-weight: 700;
           color: var(--ink-50);
           letter-spacing: -0.01em;
           text-decoration: none;
         }
         .logo img {
-          height: 28px;
+          height: 26px;
           width: auto;
-          border-radius: 6px;
         }
 
         .legal-main {
@@ -125,7 +123,7 @@ export function LegalLayout({ title, effectiveDate, children }: LegalLayoutProps
 
         .legal-title {
           font-size: clamp(36px, 5vw, 56px);
-          font-weight: 600;
+          font-weight: 700;
           line-height: 1.04;
           letter-spacing: -0.02em;
           color: var(--ink-50);
