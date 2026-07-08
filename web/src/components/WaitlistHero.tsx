@@ -640,7 +640,7 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
         }
 
         @media (max-width: 768px) {
-          .hero { padding: 40px 20px 16px; }
+          .hero { padding: 96px 20px 16px; }
           /* Static layout on mobile (no spatial intro), but keep phase-based
              opacity fade so the intro animation still plays. */
           .hero-title {
@@ -677,6 +677,8 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
           }
           /* 6 lines: prefix on its own row, accent / rotating word on the next */
           .hero .line .part { display: block; }
+          /* breathing room between the three title groups for readability */
+          .hero .line + .line { margin-top: clamp(18px, 5.5vw, 30px); }
           .hero .line .rotating-word {
             width: auto;
             text-align: center;

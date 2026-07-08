@@ -1,0 +1,317 @@
+/* ============================================================
+   InBetween — marketing sections shared base (LIGHT / AIRY)
+   Everything is scoped under `.mkt` so it never leaks into the
+   legal / waitlist routes (which define their own .eyebrow, etc.).
+   Adapted from the design system's site.css + colors_and_type.css.
+   The hero and the site footer keep their own existing styles.
+   ============================================================ */
+
+/* Anchor jumps clear the fixed nav */
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.mkt {
+  --line: rgba(20, 20, 20, 0.10);
+  --line-soft: rgba(20, 20, 20, 0.06);
+  font-family: var(--font-sans);
+}
+
+/* ----------  TYPE  ----------
+   Scoped to `.marketing` (the sections wrapper), NOT `.mkt` — the hero and nav
+   also live under `.mkt` and carry their own light-on-dark type, which these
+   dark colors must not override. */
+.marketing h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-demibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  margin: 0 0 var(--space-3);
+  color: var(--ink-1000);
+}
+.marketing h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-demibold);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-snug);
+  margin: 0 0 var(--space-3);
+  color: var(--ink-1000);
+}
+.marketing p { margin: 0; color: var(--ink-900); }
+.marketing .lead {
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-loose);
+  color: var(--ink-500);
+  letter-spacing: 0;
+}
+
+/* headings breathe + balance */
+.marketing h1, .marketing h2, .marketing h3,
+.marketing .section-head h2, .marketing .final h2 { text-wrap: balance; }
+.marketing p, .marketing .lead { text-wrap: pretty; }
+
+/* ----------  EYEBROW (scoped — this is the key isolation)  ---------- */
+.mkt .eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--gold-500);          /* darker gold reads on light paper */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.mkt .eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+}
+
+/* ----------  LAYOUT  ---------- */
+.mkt .container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+.mkt .section { padding: clamp(88px, 13vw, 176px) 0; position: relative; }
+.mkt .section--tight { padding: clamp(64px, 9vw, 112px) 0; }
+.mkt .rule { border: 0; border-top: 1px solid var(--line); }
+
+.mkt .section-head { max-width: 760px; margin-bottom: clamp(40px, 6vw, 72px); }
+.mkt .section-head .eyebrow { margin-bottom: 22px; }
+.mkt .section-head h2 { font-size: var(--fs-display-lg); margin-bottom: 18px; color: var(--ink-1000); letter-spacing: -0.02em; }
+.mkt .section-head .lead { max-width: 580px; color: var(--ink-500); }
+.mkt .section-head--center { margin-left: auto; margin-right: auto; text-align: center; }
+.mkt .section-head--center .eyebrow { justify-content: center; }
+.mkt .section-head--center .lead { margin-left: auto; margin-right: auto; }
+
+/* ----------  BUTTONS  ---------- */
+.mkt .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--font-sans); font-size: 15px; font-weight: var(--fw-demibold);
+  letter-spacing: 0.005em; text-decoration: none; cursor: pointer;
+  border: 1px solid transparent; border-radius: var(--radius-pill);
+  height: 52px; padding: 0 30px; white-space: nowrap;
+  transition: transform var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+.mkt .btn svg { width: 17px; height: 17px; }
+.mkt .btn-gold {
+  background: var(--gold-400); color: var(--ink-1000);
+  box-shadow: 0 6px 22px -8px rgba(232, 181, 48, .6);
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 42%);
+  position: relative; overflow: hidden;
+}
+.mkt .btn-gold:hover { background: var(--gold-300); transform: translateY(-1px); box-shadow: 0 12px 30px -8px rgba(232, 181, 48, .7); }
+.mkt .btn-gold:active { background: var(--gold-500); transform: scale(.985); }
+.mkt .btn-gold::after {
+  content: ""; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-18deg); transition: left .6s var(--ease-out); pointer-events: none;
+}
+.mkt .btn-gold:hover::after { left: 130%; }
+
+.mkt .btn-secondary { background: transparent; color: var(--ink-1000); border-color: rgba(20, 20, 20, 0.22); }
+.mkt .btn-secondary:hover { border-color: var(--gold-500); color: var(--ink-1000); }
+.mkt .on-dark .btn-secondary { color: var(--ink-0); border-color: rgba(255, 255, 255, 0.3); }
+.mkt .on-dark .btn-secondary:hover { border-color: var(--gold-400); }
+.mkt .btn-sm { height: 46px; padding: 0 22px; font-size: 14px; }
+.mkt .btn-block { width: 100%; }
+
+.mkt .textlink {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--gold-500); text-decoration: none; font-weight: var(--fw-medium);
+  font-size: 15px; letter-spacing: 0.005em;
+}
+.mkt .textlink svg { width: 16px; height: 16px; transition: transform var(--dur-base) var(--ease-out); }
+.mkt .textlink:hover svg { transform: translateX(4px); }
+
+/* ----------  GRAIN + DARK BANDS  ---------- */
+.mkt .grain::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: var(--grain-url); background-size: 220px;
+  opacity: 0.32; mix-blend-mode: overlay; z-index: 1;
+}
+.mkt .on-dark { background: var(--ink-1000); color: var(--ink-0); }
+.mkt .on-dark h2, .mkt .on-dark .section-head h2 { color: var(--ink-0); }
+.mkt .on-dark .lead, .mkt .on-dark .section-head .lead { color: rgba(247, 246, 243, 0.66); }
+.mkt .on-dark .eyebrow { color: var(--gold-400); }
+
+/* ----------  NAV (fixed; transparent over dark hero → light glass on scroll)  ---------- */
+.mkt .nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  transition: background var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out),
+              backdrop-filter var(--dur-base) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+.mkt .nav.scrolled {
+  background: rgba(247, 246, 243, 0.82);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border-bottom: 1px solid var(--line);
+}
+.mkt .nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 80px; max-width: var(--container-max); margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+.mkt .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+.mkt .brand img { height: 26px; width: auto; display: block; }
+.mkt .brand span {
+  font-size: 20px; font-weight: var(--fw-demibold);
+  letter-spacing: -0.01em; color: var(--ink-0);
+  transition: color var(--dur-base) var(--ease-out);
+}
+.mkt .nav.scrolled .brand span,
+.mkt .nav.menu-open .brand span { color: var(--ink-1000); }
+
+.mkt .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; margin: 0; padding: 0; }
+.mkt .nav-links a, .mkt .nav-links button {
+  position: relative; font-family: inherit; background: none; border: 0; cursor: pointer;
+  font-size: 14px; font-weight: var(--fw-regular);
+  color: rgba(255, 255, 255, 0.72); text-decoration: none; letter-spacing: 0.005em;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.mkt .nav-links a:hover, .mkt .nav-links a.active,
+.mkt .nav-links button:hover { color: var(--ink-0); }
+.mkt .nav.scrolled .nav-links a, .mkt .nav.scrolled .nav-links button { color: var(--ink-500); }
+.mkt .nav.scrolled .nav-links a:hover, .mkt .nav.scrolled .nav-links a.active,
+.mkt .nav.scrolled .nav-links button:hover { color: var(--ink-1000); }
+.mkt .nav-links a::after {
+  content: ""; position: absolute; left: 0; bottom: -6px; height: 1.5px; width: 0;
+  background: var(--gold-400); transition: width var(--dur-base) var(--ease-out);
+}
+.mkt .nav-links a:hover::after, .mkt .nav-links a.active::after { width: 100%; }
+.mkt .nav-cta { display: flex; align-items: center; gap: 24px; }
+
+/* hamburger */
+.mkt .nav-burger {
+  display: none; background: none; border: 0; cursor: pointer;
+  width: 40px; height: 40px; flex-direction: column; gap: 5px;
+  align-items: center; justify-content: center;
+}
+.mkt .nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--ink-0); transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base), background var(--dur-base); }
+.mkt .nav.scrolled .nav-burger span,
+.mkt .nav.menu-open .nav-burger span { background: var(--ink-1000); }
+.mkt .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mkt .nav-burger.open span:nth-child(2) { opacity: 0; }
+.mkt .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* mobile overlay — paper */
+.mkt .mobile-menu {
+  position: fixed; inset: 0; z-index: 99;
+  background: var(--ink-50);
+  display: flex; flex-direction: column;
+  padding: 104px 24px 32px;
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.mkt .mobile-menu.open { opacity: 1; pointer-events: auto; }
+.mkt .mobile-menu a:not(.btn), .mkt .mobile-menu button:not(.btn) {
+  font-family: inherit; text-align: left; background: none; border: 0; cursor: pointer;
+  font-size: var(--fs-display-lg); font-weight: var(--fw-demibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--ink-1000); text-decoration: none;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+}
+.mkt .mobile-menu a:not(.btn):hover, .mkt .mobile-menu button:not(.btn):hover { color: var(--gold-500); }
+.mkt .mobile-menu .btn { margin-top: auto; border-bottom: 0; }
+
+/* ----------  SCROLL REVEAL  ---------- */
+.mkt .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); will-change: opacity, transform; }
+.mkt .reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .mkt .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Progress ring (conic) — shared primitive (how-it-works + app demo) */
+.mkt .ring {
+  --p: 50;
+  --c: var(--gold-400);
+  --track: rgba(20, 20, 20, .14);
+  width: 15px; aspect-ratio: 1; border-radius: 50%; flex-shrink: 0;
+  background: conic-gradient(var(--c) calc(var(--p) * 1%), var(--track) 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+}
+
+/* The InBetween Clip — pure-CSS device. Shared primitive (how-it-works + meet). */
+.mkt .clip-device {
+  --cw: 150px;
+  width: var(--cw); aspect-ratio: 0.36;
+  border-radius: 999px; position: relative; flex-shrink: 0;
+  background: linear-gradient(101deg, #5f5c58 0%, #a8a5a0 9%, #d9d6d1 22%, #f0eeea 32%, #d0cdc8 46%, #93908c 62%, #b5b2ad 75%, #57544f 91%, #6e6b67 100%);
+  box-shadow:
+    inset 0 3px 4px rgba(255,255,255,.75),
+    inset 0 -12px 24px rgba(0,0,0,.42),
+    inset 8px 0 16px rgba(255,255,255,.18),
+    inset -10px 0 20px rgba(0,0,0,.35),
+    0 60px 110px -30px rgba(0,0,0,.75);
+}
+.mkt .clip-device::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.55) 30%, rgba(255,255,255,.10) 38%, transparent 48%);
+}
+.mkt .clip-device::after {
+  content: ""; position: absolute; left: 12%; right: 12%; top: 13.5%; height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,.28) 25%, rgba(0,0,0,.28) 75%, transparent);
+  border-bottom: 1px solid rgba(255,255,255,.35); border-radius: 999px;
+}
+.mkt .cd-mic {
+  position: absolute; left: 50%; top: 7.5%; transform: translateX(-50%);
+  width: 5.5%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #4a4a4a, #0d0d0d 70%);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.45);
+}
+.mkt .cd-led {
+  position: absolute; left: 50%; top: 24%; transform: translateX(-50%);
+  width: 4.2%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #ffe9a8, var(--gold-400) 60%, #b88a1c);
+  box-shadow: 0 0 10px 2px rgba(240,194,74,.85), 0 0 26px 6px rgba(240,194,74,.35);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mkt .cd-led { animation: led-pulse 2.6s var(--ease-in-out) infinite; }
+}
+@keyframes led-pulse {
+  0%, 100% { box-shadow: 0 0 10px 2px rgba(240,194,74,.85), 0 0 26px 6px rgba(240,194,74,.35); opacity: 1; }
+  50%      { box-shadow: 0 0 5px 1px rgba(240,194,74,.45), 0 0 14px 3px rgba(240,194,74,.18); opacity: .8; }
+}
+.mkt .cd-engrave {
+  position: absolute; left: 50%; bottom: 9%; transform: translateX(-50%);
+  font-size: calc(var(--cw) * 0.052); font-weight: var(--fw-medium);
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(0,0,0,.34); text-shadow: 0 1px 0 rgba(255,255,255,.4); white-space: nowrap;
+}
+
+/* accessible gold focus ring */
+.mkt a:focus-visible, .mkt button:focus-visible, .mkt input:focus-visible, .mkt .btn:focus-visible {
+  outline: 2px solid var(--gold-400); outline-offset: 3px; border-radius: var(--radius-sm);
+}
+
+/* ----------  RESPONSIVE  ---------- */
+@media (max-width: 1024px) { .mkt { --container-pad: 28px; } }
+@media (max-width: 760px) {
+  .mkt .nav-links, .mkt .nav-cta .btn { display: none; }
+  .mkt .nav-burger { display: flex; }
+}
+@media (max-width: 600px) {
+  .mkt { --container-pad: 20px; }
+  .mkt .nav-inner { height: 66px; }
+  .mkt .brand span { font-size: 18px; }
+  .mkt .btn { height: 50px; }
+  .mkt .section { padding: clamp(64px, 16vw, 96px) 0; }
+  .mkt .section--tight { padding: clamp(48px, 12vw, 72px) 0; }
+}
+@media (max-width: 380px) { .mkt { --container-pad: 16px; } }

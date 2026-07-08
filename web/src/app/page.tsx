@@ -1,58 +1,37 @@
+import "./marketing.css";
 import { Suspense } from "react";
-import Image from "next/image";
 import { IntroStage } from "@/components/IntroStage";
-import { ContactModal } from "@/components/ContactModal";
+import { Nav } from "@/components/Nav";
+import { MarketingSections } from "@/components/MarketingSections";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export default function Home() {
   return (
-    <div className="page">
-      <header className="site-header">
-        <div className="logo">
-          <Image
-            src="/images/logo-lockup-white.png"
-            alt="InBetween"
-            width={3389}
-            height={463}
-            priority
-          />
-        </div>
-        <ContactModal />
-      </header>
+    <div className="page-root mkt">
+      <Nav />
 
-      <main>
-        <Suspense fallback={null}>
-          <IntroStage />
-        </Suspense>
-      </main>
+      {/* Hero — kept exactly as before: dark gradient + grain scoped here so it
+          never bleeds behind the marketing sections. */}
+      <div className="page">
+        <main>
+          <Suspense fallback={null}>
+            <IntroStage />
+          </Suspense>
+        </main>
+      </div>
 
-      <footer>
-        <div className="footer-social">
-          <a href="https://instagram.com/danceuniteduk" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/company/inbetweenapp" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="4"/>
-              <line x1="8" y1="11" x2="8" y2="17"/>
-              <line x1="8" y1="8" x2="8" y2="8.5"/>
-              <path d="M12 17v-4c0-1.1.9-2 2-2s2 .9 2 2v4"/>
-              <line x1="12" y1="11" x2="12" y2="17"/>
-            </svg>
-          </a>
-        </div>
-        <nav className="footer-legal" aria-label="Legal">
-          <a href="/terms">Terms</a>
-          <span aria-hidden="true">·</span>
-          <a href="/privacy">Privacy</a>
-        </nav>
-        © InBetween 2026
-      </footer>
+      <MarketingSections />
+
+      <SiteFooter />
 
       <style>{`
+        .page-root {
+          display: flex;
+          flex-direction: column;
+          background: var(--ink-50);
+        }
+
+        /* Hero shell — unchanged from the original single-viewport landing. */
         .page {
           min-height: 100vh;
           display: flex;
@@ -73,7 +52,7 @@ export default function Home() {
           pointer-events: none;
         }
 
-        main {
+        .page main {
           position: relative;
           z-index: 5;
           flex: 1;
@@ -81,82 +60,6 @@ export default function Home() {
           flex-direction: column;
         }
 
-        .site-header {
-          position: relative;
-          z-index: 10;
-          padding: 32px 48px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .logo {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 20px;
-          font-weight: 700;
-          color: var(--ink-50);
-          letter-spacing: -0.01em;
-        }
-
-        .logo img {
-          height: 26px;
-          width: auto;
-        }
-
-        footer {
-          position: relative;
-          z-index: 10;
-          padding: 32px 48px;
-          text-align: center;
-          font-size: 13px;
-          color: rgba(247, 246, 243, 0.4);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 14px;
-        }
-
-        .footer-social {
-          display: flex;
-          gap: 16px;
-        }
-
-        .footer-social a {
-          color: rgba(247, 246, 243, 0.35);
-          transition: color 150ms var(--ease-out);
-          display: flex;
-        }
-        .footer-social a:hover {
-          color: var(--gold-500);
-        }
-
-        .footer-legal {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          font-size: 13px;
-        }
-        .footer-legal a {
-          color: rgba(247, 246, 243, 0.5);
-          text-decoration: none;
-          transition: color 150ms var(--ease-out);
-        }
-        .footer-legal a:hover {
-          color: var(--gold-500);
-        }
-        .footer-legal span {
-          color: rgba(247, 246, 243, 0.25);
-        }
-
-        @media (max-width: 768px) {
-          .site-header,
-          footer {
-            padding-left: 24px;
-            padding-right: 24px;
-          }
-        }
       `}</style>
     </div>
   );

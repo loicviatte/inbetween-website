@@ -4,8 +4,18 @@ import { useEffect, useRef, useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function ContactModal() {
-  const [open, setOpen] = useState(false);
+/**
+ * Controlled contact dialog — the caller owns the open state and renders its
+ * own trigger(s). This lets the nav style its Contact triggers per context
+ * (desktop link vs full-screen mobile menu item) while sharing one dialog.
+ */
+export function ContactModal({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -17,8 +27,10 @@ export function ContactModal() {
     const el = dialogRef.current;
     if (!el) return;
     if (open) {
-      el.showModal();
-    } else {
+      setStatus("idle");
+      setError("");
+      if (!el.open) el.showModal();
+    } else if (el.open) {
       el.close();
     }
   }, [open]);
@@ -26,19 +38,13 @@ export function ContactModal() {
   useEffect(() => {
     const el = dialogRef.current;
     if (!el) return;
-    const onClose = () => setOpen(false);
-    el.addEventListener("close", onClose);
-    return () => el.removeEventListener("close", onClose);
-  }, []);
+    const handleClose = () => onClose();
+    el.addEventListener("close", handleClose);
+    return () => el.removeEventListener("close", handleClose);
+  }, [onClose]);
 
   function handleBackdropClick(e: React.MouseEvent<HTMLDialogElement>) {
-    if (e.target === dialogRef.current) setOpen(false);
-  }
-
-  function handleOpen() {
-    setStatus("idle");
-    setError("");
-    setOpen(true);
+    if (e.target === dialogRef.current) onClose();
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -70,13 +76,9 @@ export function ContactModal() {
 
   return (
     <>
-      <button className="contact-link" onClick={handleOpen}>
-        Contact
-      </button>
-
       <dialog ref={dialogRef} className="contact-dialog" onClick={handleBackdropClick}>
         <div className="contact-card">
-          <button className="close-btn" onClick={() => setOpen(false)} aria-label="Close">
+          <button className="close-btn" onClick={onClose} aria-label="Close">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
             </svg>
@@ -91,7 +93,7 @@ export function ContactModal() {
               </div>
               <h2 className="card-title">Message sent</h2>
               <p className="card-sub">We'll get back to you as soon as possible.</p>
-              <button className="close-text-btn" onClick={() => setOpen(false)}>Close</button>
+              <button className="close-text-btn" onClick={onClose}>Close</button>
             </div>
           ) : (
             <>
@@ -156,19 +158,6 @@ export function ContactModal() {
       </dialog>
 
       <style>{`
-        .contact-link {
-          appearance: none;
-          background: none;
-          border: none;
-          padding: 0;
-          cursor: pointer;
-          font-family: inherit;
-          font-size: 14px;
-          color: rgba(247, 246, 243, 0.7);
-          transition: color 150ms var(--ease-out);
-        }
-        .contact-link:hover { color: var(--gold-500); }
-
         .contact-dialog {
           background: transparent;
           border: none;
