@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-// A coach marked this student's account as under 18, which locked it. The link
+// This student's account is locked while their age is checked. The link
 // in the email lands here; confirming (a button press, never the page load)
 // unlocks the account. The age-check edge function does the work.
 
@@ -52,9 +52,9 @@ export function ConfirmAgeForm({ token }: { token: string }) {
         <>
           <h1 className="rp-title">Confirm you&rsquo;re 18 or over</h1>
           <p className="rp-lead">
-            Your coach marked your InBetween account as under 18, so it&rsquo;s locked. Confirm
-            only if you&rsquo;re 18 or over &mdash; if you&rsquo;re under 18, a parent needs to
-            approve your account from the app instead.
+            We think you might be under 18, so your InBetween account is locked. Confirm only if
+            you&rsquo;re 18 or over &mdash; if you&rsquo;re under 18, a parent needs to approve your
+            account from the app instead.
           </p>
           <button className="rp-submit" type="button" onClick={confirm} disabled={busy}>
             {busy ? "Confirming…" : "I’m 18 or over"}
@@ -69,7 +69,7 @@ export function ConfirmAgeForm({ token }: { token: string }) {
         <>
           <h1 className="rp-title">{name ? `Thanks, ${name}` : "Thanks"}</h1>
           <p className="rp-lead">
-            Your account is unlocked, and your coach can capture your lessons again. Go back to
+            Your account is unlocked and your lessons can be captured again. Go back to
             the InBetween app &mdash; it updates by itself.
           </p>
           <a className="rp-submit rp-open" href="com.loicviatte.inbetweenapp://">
