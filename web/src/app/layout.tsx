@@ -46,7 +46,7 @@ export default function RootLayout({
         {children}
         <SiteAnalytics />
         <Script id="meta-pixel" strategy="afterInteractive">
-          {`if (!/^\\/(reset-password|auth)(\\/|$)/.test(location.pathname) && !/(access_token|refresh_token|token_hash)=/.test(location.search + location.hash)) {
+          {`if (!/^\\/(reset-password|auth|consent)(\\/|$)/.test(location.pathname) && !/(access_token|refresh_token|token_hash|token)=/.test(location.search + location.hash)) {
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};

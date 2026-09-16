@@ -123,7 +123,7 @@ export function ResetPasswordForm({ tokenHash }: { tokenHash: string }) {
               ? "Nothing to change. Go back to the InBetween app and sign in with it."
               : "Go back to the InBetween app and sign in with your new password."}
           </p>
-          <a className="rp-submit rp-open" href="inbetween://">
+          <a className="rp-submit rp-open" href="com.loicviatte.inbetweenapp://">
             Open InBetween
           </a>
         </>
@@ -141,7 +141,7 @@ export function ResetPasswordForm({ tokenHash }: { tokenHash: string }) {
             To get a new one, open InBetween, enter your email on the sign-in
             screen and tap <strong>Forgot password</strong>.
           </p>
-          <a className="rp-submit rp-open" href="inbetween://">
+          <a className="rp-submit rp-open" href="com.loicviatte.inbetweenapp://">
             Open InBetween
           </a>
         </>
