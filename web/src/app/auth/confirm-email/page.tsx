@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { AuthShell } from "@/components/AuthShell";
-import { ResetPasswordForm } from "./ResetPasswordForm";
+import { ConfirmEmailForm } from "./ConfirmEmailForm";
 
 export const metadata: Metadata = {
-  title: "Reset your password — InBetween",
+  title: "Confirm your new email — InBetween",
   robots: { index: false, follow: false },
   referrer: "no-referrer",
 };
 
-export default async function ResetPasswordPage({
+export default async function ConfirmEmailPage({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -18,7 +18,7 @@ export default async function ResetPasswordPage({
 
   return (
     <AuthShell>
-      <ResetPasswordForm tokenHash={tokenHash} />
+      <ConfirmEmailForm tokenHash={tokenHash} />
     </AuthShell>
   );
 }

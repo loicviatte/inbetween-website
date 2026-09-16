@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Syne } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SiteAnalytics } from "@/components/SiteAnalytics";
 import "./globals.css";
 
 const META_PIXEL_ID = "1289816079954533";
@@ -45,10 +44,10 @@ export default function RootLayout({
     <html lang="en" className={syne.variable}>
       <body suppressHydrationWarning>
         {children}
-        <Analytics />
-        <SpeedInsights />
+        <SiteAnalytics />
         <Script id="meta-pixel" strategy="afterInteractive">
-          {`!function(f,b,e,v,n,t,s)
+          {`if (!/^\\/(reset-password|auth)(\\/|$)/.test(location.pathname) && !/(access_token|refresh_token|token_hash)=/.test(location.search + location.hash)) {
+!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -57,7 +56,8 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${META_PIXEL_ID}');
-fbq('track', 'PageView');`}
+fbq('track', 'PageView');
+}`}
         </Script>
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
