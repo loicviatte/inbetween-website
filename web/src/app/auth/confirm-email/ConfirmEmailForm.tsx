@@ -75,7 +75,7 @@ export function ConfirmEmailForm({ tokenHash }: { tokenHash: string }) {
               "Your InBetween account uses your new email. Use it next time you sign in."
             )}
           </p>
-          <a className="rp-submit rp-open" href="inbetween://">
+          <a className="rp-submit rp-open" href="com.loicviatte.inbetweenapp://">
             Open InBetween
           </a>
         </>
@@ -88,7 +88,7 @@ export function ConfirmEmailForm({ tokenHash }: { tokenHash: string }) {
             Confirmation links work once, for one hour. To try again, open
             InBetween and change your email in <strong>Settings › Account</strong>.
           </p>
-          <a className="rp-submit rp-open" href="inbetween://">
+          <a className="rp-submit rp-open" href="com.loicviatte.inbetweenapp://">
             Open InBetween
           </a>
         </>
