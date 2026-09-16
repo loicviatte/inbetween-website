@@ -298,7 +298,9 @@ export function ConsentFlow({ initialToken }: { initialToken: string }) {
             To follow {child}&rsquo;s training, sign in to the InBetween app with{" "}
             <strong>{inv.parentEmail}</strong>
             {inv.accountExists ? " and your usual password." : " and the password you just chose."}{" "}
-            {child} signs in with the same account on their phone.
+            To put {child} on their own phone, open <strong>Stats ▸ Links</strong> there and tap{" "}
+            <strong>Get a code</strong>. {child} types it on their phone. There&rsquo;s no password to
+            share.
           </div>
         </>
       )}
