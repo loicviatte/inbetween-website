@@ -4,10 +4,16 @@ import Link from "next/link";
 type LegalLayoutProps = {
   title: string;
   effectiveDate: string;
+  previousVersion?: string;
   children: React.ReactNode;
 };
 
-export function LegalLayout({ title, effectiveDate, children }: LegalLayoutProps) {
+export function LegalLayout({
+  title,
+  effectiveDate,
+  previousVersion,
+  children,
+}: LegalLayoutProps) {
   return (
     <div className="legal-page">
       <header className="site-header">
@@ -30,6 +36,9 @@ export function LegalLayout({ title, effectiveDate, children }: LegalLayoutProps
           </p>
           <h1 className="legal-title">{title}</h1>
           <p className="legal-effective">Effective date: {effectiveDate}</p>
+          {previousVersion ? (
+            <p className="legal-previous">Previous version: {previousVersion}</p>
+          ) : null}
           <div className="divider" />
           {children}
         </article>
@@ -135,6 +144,12 @@ export function LegalLayout({ title, effectiveDate, children }: LegalLayoutProps
           letter-spacing: 0.01em;
           color: var(--gold-300);
           margin: 0;
+        }
+        .legal-previous {
+          font-size: 13px;
+          font-weight: 400;
+          color: rgba(247, 246, 243, 0.4);
+          margin: 6px 0 0;
         }
 
         .divider {
