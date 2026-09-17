@@ -1,5 +1,5 @@
 // Pages opened from the app's account and parent-permission emails. Their URLs
-// carry one-time codes, so analytics and the Meta pixel must never see them.
+// carry one-time codes, so analytics must never see them.
 export const PRIVATE_ROUTE_RE = /^\/(reset-password|auth|consent)(\/|$)/;
 
 export function isPrivateUrl(url: string): boolean {
