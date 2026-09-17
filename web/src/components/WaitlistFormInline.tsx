@@ -8,9 +8,9 @@ type Role = "coach" | "dancer";
 
 /**
  * Compact waitlist form for the marketing bands (e.g. the final CTA).
- * Wired to the same /api/waitlist flow as the hero — email + role, Meta Pixel
- * Lead tracking, then redirect to the referral rank page. The hero form is left
- * untouched; this is a self-contained twin so both entry points behave alike.
+ * Wired to the same /api/waitlist flow as the hero — email + role, then redirect
+ * to the referral rank page. The hero form is left untouched; this is a
+ * self-contained twin so both entry points behave alike.
  */
 export function WaitlistFormInline({ idPrefix = "cta" }: { idPrefix?: string }) {
   const [role, setRole] = useState<Role>("dancer");
@@ -49,12 +49,6 @@ export function WaitlistFormInline({ idPrefix = "cta" }: { idPrefix?: string }) 
       setStatus("success");
       setMessage("You're on the list. Taking you to your rank…");
       setEmail("");
-      if (typeof window !== "undefined" && typeof window.fbq === "function") {
-        window.fbq("track", "Lead", {
-          content_name: "waitlist_signup",
-          content_category: role,
-        });
-      }
       if (data.code) router.push(`/waitlist/${data.code}`);
     } catch {
       setStatus("error");
