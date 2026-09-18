@@ -64,7 +64,8 @@ export function ConsentFlow({ initialToken }: { initialToken: string }) {
   const [token, setToken] = useState(prefilled);
   const [smsCode, setSmsCode] = useState("");
   const [inv, setInv] = useState<Invitation | null>(null);
-  const [checks, setChecks] = useState([false, false, false]);
+  // One box per statement the server sends: the wording, and how many, are its.
+  const [checks, setChecks] = useState<boolean[]>([]);
   const [password, setPassword] = useState("");
   const [shown, setShown] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -81,7 +82,7 @@ export function ConsentFlow({ initialToken }: { initialToken: string }) {
       const r = await call<Invitation>("verify", { token, code: smsCode });
       setInv(r);
       // Every box starts empty, every time the codes are entered.
-      setChecks([false, false, false]);
+      setChecks(r.copy.checks.map(() => false));
       setPassword("");
       setStage("review");
       window.scrollTo({ top: 0 });
@@ -94,7 +95,7 @@ export function ConsentFlow({ initialToken }: { initialToken: string }) {
   async function approve(e: React.FormEvent) {
     e.preventDefault();
     if (busy || !inv) return;
-    if (!checks.every(Boolean)) return setError("Tick all three boxes to give permission.");
+    if (checks.length === 0 || !checks.every(Boolean)) return setError("Tick every box to give permission.");
     if (!inv.accountExists && password.length < 8) return setError("Choose a password of at least 8 characters.");
     setBusy(true);
     setError("");
@@ -208,7 +209,7 @@ export function ConsentFlow({ initialToken }: { initialToken: string }) {
               <label key={line} className={`cf-check ${checks[i] ? "is-on" : ""}`}>
                 <input
                   type="checkbox"
-                  checked={checks[i]}
+                  checked={!!checks[i]}
                   onChange={() => {
                     setChecks(checks.map((c, k) => (k === i ? !c : c)));
                     if (error) setError("");
