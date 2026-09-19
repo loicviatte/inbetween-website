@@ -13,8 +13,8 @@ export default function TermsPage() {
   return (
     <LegalLayout
       title="Terms of Service"
-      effectiveDate="17 September 2026"
-      previousVersion="1 May 2026"
+      effectiveDate="19 September 2026"
+      previousVersion="17 September 2026"
     >
       <p>
         These Terms of Service ("Terms") govern your access to and use of the
@@ -33,20 +33,17 @@ export default function TermsPage() {
 
       <h2>1. Who we are</h2>
       <p>
-        The Service is operated by <strong>Dance United Ltd</strong>
+        The Service is operated by <strong>InBetween Technologies Ltd</strong>
         ("InBetween", "we", "us", "our"), a private limited company registered
         in England and Wales.
       </p>
       <ul>
         <li>
-          <strong>Company number:</strong> 16555204
+          <strong>Company number:</strong> 17468968
         </li>
         <li>
           <strong>Registered office:</strong> 71–75 Shelton Street, Covent
           Garden, London, WC2H 9JQ, United Kingdom
-        </li>
-        <li>
-          <strong>Trading name:</strong> InBetween
         </li>
         <li>
           <strong>Contact:</strong> hello@useinbetween.com
@@ -388,7 +385,7 @@ export default function TermsPage() {
       <h2>10. Our intellectual property</h2>
       <p>
         The Service, including the InBetween name, logo, software, design, and
-        content we provide, is owned by or licensed to Dance United Ltd and is
+        content we provide, is owned by or licensed to InBetween Technologies Ltd and is
         protected by intellectual-property laws. This includes the taxonomy,
         classifications, rankings, weightings, embeddings, indexes, data
         structures and sequencing logic described in section 9A(d).
@@ -480,7 +477,7 @@ export default function TermsPage() {
 
       <h2>16. Indemnity</h2>
       <p>
-        You agree to indemnify and hold harmless Dance United Ltd against any
+        You agree to indemnify and hold harmless InBetween Technologies Ltd against any
         claims, damages, losses, and costs (including reasonable legal fees)
         arising from your breach of these Terms, your misuse of the Service, or
         recordings or content you provide in breach of section 7 or applicable
@@ -513,8 +510,8 @@ export default function TermsPage() {
 
       <hr className="rule" />
       <p>
-        Dance United Ltd, trading as InBetween. Company number 16555204.
-        Registered in England and Wales.
+        InBetween Technologies Ltd. Company number 17468968. Registered in
+        England and Wales.
       </p>
     </LegalLayout>
   );
