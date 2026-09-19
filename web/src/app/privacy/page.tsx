@@ -6,19 +6,19 @@ import { LegalLayout } from "@/components/LegalLayout";
 export const metadata: Metadata = {
   title: "Privacy Policy — InBetween",
   description:
-    "How Dance United Ltd, trading as InBetween, collects and uses your personal data under the UK and EU GDPR.",
+    "How InBetween Technologies Ltd collects and uses your personal data under the UK and EU GDPR.",
 };
 
 export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      effectiveDate="17 September 2026"
-      previousVersion="1 May 2026"
+      effectiveDate="19 September 2026"
+      previousVersion="17 September 2026"
     >
       <p>
-        This Privacy Policy explains how <strong>Dance United Ltd</strong>,
-        trading as <strong>InBetween</strong> ("InBetween", "we", "us", "our"),
+        This Privacy Policy explains how{" "}
+        <strong>InBetween Technologies Ltd</strong> ("InBetween", "we", "us", "our"),
         collects and uses your personal data when you use the InBetween mobile
         application and related services (the "Service"). It is written to comply
         with the <strong>UK GDPR</strong> and the <strong>EU GDPR</strong>.
@@ -34,12 +34,12 @@ export default function PrivacyPage() {
 
       <h2>1. Who is responsible for your data</h2>
       <p>
-        <strong>Dance United Ltd</strong> is the data controller for the
-        personal data described in this policy.
+        <strong>InBetween Technologies Ltd</strong> is the data controller for
+        the personal data described in this policy.
       </p>
       <ul>
         <li>
-          <strong>Company number:</strong> 16555204
+          <strong>Company number:</strong> 17468968
         </li>
         <li>
           <strong>Registered office:</strong> 71–75 Shelton Street, Covent
@@ -539,9 +539,8 @@ export default function PrivacyPage() {
 
       <hr className="rule" />
       <p>
-        Dance United Ltd, trading as InBetween. Company number 16555204.
-        Registered office: 71–75 Shelton Street, Covent Garden, London, WC2H 9JQ,
-        United Kingdom.
+        InBetween Technologies Ltd. Company number 17468968. Registered office:
+        71–75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.
       </p>
     </LegalLayout>
   );
