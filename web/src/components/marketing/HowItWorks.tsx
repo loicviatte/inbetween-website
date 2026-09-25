@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const WAVE = [8, 14, 20, 11, 18, 22, 9, 15, 21, 12, 17, 8, 13, 19, 10, 16, 22, 11, 14, 9, 18, 12, 20, 10];
 
@@ -76,11 +77,13 @@ export function HowItWorks() {
             <div className="hv hv-1">
               <div className="hv-card grain">
                 <div className="glow" />
-                <div className="clip-device">
-                  <span className="cd-mic" />
-                  <span className="cd-led" />
-                  <span className="cd-engrave">InBetween</span>
-                </div>
+                <Image
+                  src="/images/clip/clip-hero.webp"
+                  alt="The InBetween Clip"
+                  width={702}
+                  height={1200}
+                  className="hv-clip"
+                />
                 <div className="hv-tag">
                   Recording <b>· lesson in progress</b>
                 </div>
@@ -198,7 +201,12 @@ export function HowItWorks() {
           box-shadow: 0 40px 80px -36px rgba(20,20,20,.5);
         }
         .hv-card .glow { position: absolute; inset: 0; background: radial-gradient(70% 70% at 50% 80%, rgba(150,112,42,0.4) 0%, transparent 65%); }
-        .hv-1 .clip-device { --cw: 130px; transform: rotate(-7deg); position: relative; }
+        .hv-1 .hv-clip {
+          position: relative; z-index: 1;
+          height: clamp(280px, 40vh, 350px); width: auto;
+          transform: rotate(-5deg);
+          filter: drop-shadow(0 26px 46px rgba(0,0,0,0.55));
+        }
         .hv-1 .hv-tag { position: absolute; bottom: 26px; left: 0; right: 0; text-align: center; font-size: 13px; color: rgba(247,246,243,.55); font-weight: var(--fw-light); }
         .hv-1 .hv-tag b { color: var(--gold-400); font-weight: var(--fw-medium); }
 
