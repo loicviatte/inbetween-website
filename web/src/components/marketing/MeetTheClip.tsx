@@ -1,13 +1,56 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+
+// Real product renders, matted onto transparency so the device floats on the
+// dark band. Order is the tour shown in the thumbnail strip.
+const ANGLES = [
+  { src: "/images/clip/clip-hero.webp", label: "Three-quarter" },
+  { src: "/images/clip/clip-front.webp", label: "Front" },
+  { src: "/images/clip/clip-back.webp", label: "Back" },
+  { src: "/images/clip/clip-side.webp", label: "Side" },
+] as const;
+
 export function MeetTheClip() {
+  const [active, setActive] = useState(0);
+
   return (
     <section className="section--tight meet" id="clip">
       <div className="meet-band grain on-dark reveal">
         <div className="meet-glow" />
         <div className="meet-visual">
-          <div className="clip-device">
-            <span className="cd-mic" />
-            <span className="cd-led" />
-            <span className="cd-engrave">InBetween</span>
+          <div className="clip-stage">
+            <span className="clip-halo" aria-hidden="true" />
+            <div className="clip-shots">
+              {ANGLES.map((a, i) => (
+                <Image
+                  key={a.src}
+                  src={a.src}
+                  alt={`The InBetween Clip, ${a.label.toLowerCase()} view`}
+                  fill
+                  sizes="(max-width: 900px) 68vw, 360px"
+                  className="clip-shot"
+                  data-active={i === active}
+                  priority={i === 0}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="clip-thumbs" role="group" aria-label="Clip angles">
+            {ANGLES.map((a, i) => (
+              <button
+                key={a.src}
+                type="button"
+                className="clip-thumb"
+                data-active={i === active}
+                aria-pressed={i === active}
+                aria-label={`Show ${a.label.toLowerCase()} view`}
+                onClick={() => setActive(i)}
+              >
+                <Image src={a.src} alt="" fill sizes="64px" className="clip-thumb-img" />
+              </button>
+            ))}
           </div>
         </div>
         <div className="meet-copy">
@@ -56,12 +99,48 @@ export function MeetTheClip() {
           position: absolute; inset: 0; pointer-events: none;
           background: radial-gradient(60% 75% at 28% 60%, rgba(150,112,42,0.34) 0%, rgba(60,45,18,0.12) 45%, transparent 72%);
         }
-        .meet-visual { position: relative; display: flex; justify-content: center; z-index: 2; }
-        .meet-visual .clip-device {
-          --cw: clamp(160px, 16vw, 210px);
-          transform: rotate(-6deg);
-          filter: drop-shadow(0 0 80px rgba(240,194,74,.12));
+        .meet-visual {
+          position: relative; z-index: 2;
+          display: flex; flex-direction: column; align-items: center;
+          gap: clamp(16px, 2.4vw, 26px);
         }
+        /* Floating device showcase */
+        .clip-stage {
+          position: relative;
+          width: 100%;
+          height: clamp(300px, 40vh, 440px);
+        }
+        .clip-halo {
+          position: absolute; inset: 0; pointer-events: none;
+          background: radial-gradient(44% 40% at 50% 46%, rgba(240,194,74,0.24), rgba(240,194,74,0.06) 44%, transparent 70%);
+        }
+        .clip-shots { position: absolute; inset: 0; }
+        .clip-shot {
+          object-fit: contain;
+          opacity: 0;
+          transition: opacity .5s var(--ease-out);
+          filter: drop-shadow(0 26px 46px rgba(0,0,0,0.55));
+        }
+        .clip-shot[data-active="true"] { opacity: 1; }
+        @media (prefers-reduced-motion: reduce) {
+          .clip-shot { transition: none; }
+        }
+        .clip-thumbs { display: flex; gap: 10px; justify-content: center; }
+        .clip-thumb {
+          position: relative; width: 56px; height: 56px; flex: none;
+          border-radius: 14px; padding: 6px; cursor: pointer; overflow: hidden;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.10);
+          transition: border-color .18s var(--ease-out), background .18s var(--ease-out), transform .18s var(--ease-out);
+        }
+        .clip-thumb:hover { border-color: rgba(240,194,74,0.5); transform: translateY(-1px); }
+        .clip-thumb[data-active="true"] {
+          border-color: var(--gold-400);
+          background: rgba(240,194,74,0.10);
+        }
+        .clip-thumb:focus-visible { outline: 2px solid var(--gold-400); outline-offset: 2px; }
+        .clip-thumb-img { object-fit: contain; }
+
         .meet-copy { position: relative; z-index: 2; }
         .meet-copy .eyebrow { margin-bottom: 22px; }
         .meet-copy h2 {
@@ -82,10 +161,10 @@ export function MeetTheClip() {
         .spec { padding: 22px 24px 24px 0; border-bottom: 1px solid rgba(255,255,255,.10); }
         .spec h3 { font-size: 16px; font-weight: var(--fw-demibold); color: var(--ink-0); margin-bottom: 5px; letter-spacing: -0.005em; }
         .spec p { font-size: 13.5px; font-weight: var(--fw-light); color: rgba(247,246,243,0.52); line-height: 1.55; margin: 0; }
-        /* .clip-device / .cd-* live in marketing.css (shared with how-it-works) */
 
         @media (max-width: 900px) {
           .meet-band { grid-template-columns: 1fr; padding: clamp(56px, 9vw, 80px) clamp(24px, 6vw, 48px); }
+          .meet-visual { order: -1; }
         }
         @media (max-width: 760px) {
           .spec-grid { grid-template-columns: 1fr; }
