@@ -125,7 +125,8 @@ export default function TermsPage() {
         <li>
           We may need to reset derived data, such as summaries, knowledge bases
           or indexes, in order to fix defects or migrate systems. We will not
-          delete your source content in the course of such work. Source content
+          delete your source content in the course of such work, subject to the
+          automatic deletion of audio described in section 9A(e). Source content
           means lesson audio, transcriptions, the notes you have created, and the
           focus points saved to your account.
         </li>
@@ -253,7 +254,7 @@ export default function TermsPage() {
       <h3>(a) Ownership</h3>
       <p>
         The teaching material you create, or that is captured from your lessons,
-        is yours. This includes lesson audio, transcriptions, focus points,
+        is yours. This includes lesson audio, voice notes, transcriptions, focus points,
         drills, corrections, tips, metaphors, vocabulary, notes, and any
         summaries derived from them. We refer to all of it as "Coach Knowledge".
         Nothing in these Terms transfers ownership of it to us.
@@ -280,7 +281,7 @@ export default function TermsPage() {
       <h3>(b) Purpose limitation</h3>
       <p>We distinguish between your content and interaction signals.</p>
       <p>
-        <strong>Your content</strong> means lesson audio, transcriptions, focus
+        <strong>Your content</strong> means lesson audio, voice notes, transcriptions, focus
         points, notes, and any text derived from them. We use your content solely
         to generate and deliver focus points, summaries and answers to you and to
         the students linked to your account. We do not use it to train,
@@ -340,7 +341,8 @@ export default function TermsPage() {
       <p>
         You may export your Coach Knowledge at any time from your account
         settings, in a machine-readable format. Your export includes original
-        audio where retained, transcriptions, your notes, the text of your focus
+        audio and voice notes where still retained (see paragraph (e)),
+        transcriptions, your notes, the text of your focus
         points, the corrections, tips, metaphors and vocabulary identified from
         your lessons, and the associated dates and student references.
       </p>
@@ -361,19 +363,35 @@ export default function TermsPage() {
       <p>Export is free and remains available for 30 days after your account closes.</p>
 
       <h3>(e) Deletion</h3>
-      <p>You may delete any item, or all of your Coach Knowledge, at any time.</p>
       <p>
-        On request we permanently erase it from production systems within 30 days
-        and from backups within 90 days. Erasure covers lesson audio,
-        transcriptions, focus points, notes, your knowledge base, vector
-        embeddings, derived summaries and cached model context. We will confirm
-        completion in writing.
+        <strong>Deletion on request.</strong> You may delete any item, or all of
+        your Coach Knowledge, at any time. On request we permanently erase it from
+        production systems within 30 days and from backups within 90 days. Erasure
+        covers lesson audio, voice notes, transcriptions, focus points, notes,
+        your knowledge base, vector embeddings, derived summaries and cached model
+        context. We will confirm completion in writing.
       </p>
       <p>
-        Focus points already delivered to a student remain in that student's
-        account by default; you may ask us to remove those at the same time.
-        Students hold their own rights over their personal data, as set out in our
-        Privacy Policy, and those rights are unaffected by this paragraph.
+        <strong>Automatic deletion of audio.</strong> Lesson audio and voice notes
+        are automatically deleted 180 days after the lesson, whether or not your
+        account remains active. They are removed from production systems on that
+        date and from backups within 90 days afterwards. Transcriptions, focus
+        points, notes and your knowledge base are not affected by this and remain
+        available until you delete them or close your account.
+      </p>
+      <p>
+        <strong>Notice before automatic deletion.</strong> We will notify you at
+        least 14 days before audio is automatically deleted, so that you can
+        export it first if you want to keep it. An export made after the deletion
+        date will not include that audio, but will still include the transcription
+        and everything derived from it.
+      </p>
+      <p>
+        <strong>Student copies.</strong> Focus points already delivered to a
+        student remain in that student's account by default; you may ask us to
+        remove those at the same time. Students hold their own rights over their
+        personal data, as set out in our Privacy Policy, and those rights are
+        unaffected by this paragraph.
       </p>
 
       <h3>(f) Survival</h3>
