@@ -63,6 +63,10 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
     const raw = searchParams?.get("ref") ?? "";
     return /^[A-Z0-9]{8}$/.test(raw) ? raw : null;
   })();
+  const source = (() => {
+    const raw = (searchParams?.get("src") ?? "").toLowerCase();
+    return /^[a-z0-9_]{1,40}$/.test(raw) ? raw : null;
+  })();
 
   const variant = COPY[activeRole];
 
@@ -107,7 +111,7 @@ export function WaitlistHero({ phase }: { phase: IntroPhase }) {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, role, ref: refCode }),
+        body: JSON.stringify({ email, role, ref: refCode, source }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         error?: string;

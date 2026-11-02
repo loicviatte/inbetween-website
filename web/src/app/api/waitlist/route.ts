@@ -4,6 +4,7 @@ import { getSupabaseAdmin } from "@/lib/supabase";
 import { generateReferralCode } from "@/lib/referral-code";
 import { getStatusByCode } from "@/lib/rank";
 import { renderWelcomeEmail } from "@/lib/welcome-email";
+import { cleanSource, partnerOf, PARTNER_LINKS } from "@/lib/source";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const VALID_ROLES = new Set(["coach", "dancer"]);
@@ -25,6 +26,7 @@ export async function POST(request: Request) {
   const role = String(record.role ?? "").trim().toLowerCase();
   const refRaw = record.ref != null ? String(record.ref).trim() : "";
   const ref = refRaw && /^[A-Z0-9]{8}$/.test(refRaw) ? refRaw : null;
+  const source = cleanSource(record.source);
 
   if (!email || !EMAIL_RE.test(email) || email.length > 254) {
     return NextResponse.json(
@@ -103,19 +105,39 @@ export async function POST(request: Request) {
     );
   }
 
+  // Attribution is saved separately and best effort, so a missing column can
+  // never break a signup (see db/schema.sql for the `source` column).
+  if (source) {
+    const { error: srcErr } = await supabase
+      .from("waitlist")
+      .update({ source })
+      .eq("referral_code", insertedCode);
+    if (srcErr) console.error("[waitlist] Source update error:", srcErr);
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   if (apiKey) {
     const resend = new Resend(apiKey);
     const coachSegmentId = process.env.RESEND_SEGMENT_COACH_ID;
     const dancerSegmentId = process.env.RESEND_SEGMENT_DANCER_ID;
     const segmentId = role === "coach" ? coachSegmentId : dancerSegmentId;
-    const segments = segmentId ? [{ id: segmentId }] : undefined;
+    const partner = partnerOf(source);
+    const partnerSegmentId = partner ? PARTNER_LINKS[partner].segmentId : undefined;
+    const segmentIds = [segmentId, partnerSegmentId].filter(
+      (id): id is string => Boolean(id)
+    );
+    const segments = segmentIds.length
+      ? segmentIds.map((id) => ({ id }))
+      : undefined;
+    const properties: Record<string, string> = { role };
+    if (source) properties.source = source;
 
     try {
       const { error: contactError } = await resend.contacts.create({
         email,
         unsubscribed: false,
         segments,
+        properties,
       });
       if (contactError) {
         console.error("[waitlist] Resend contact error:", contactError);
