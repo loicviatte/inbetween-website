@@ -21,3 +21,10 @@ export function partnerOf(source: string | null): string | null {
   const slug = source.split("_")[0];
   return slug in PARTNER_LINKS ? slug : null;
 }
+
+// Outbound partner links counted in `link_clicks` before redirecting:
+// useinbetween.com/go/<slug>?c=<channel> -> target. Used by the BTR site
+// (breaktheroutinepodcast.com/studio) to count clicks to sponsors.
+export const GO_LINKS: Record<string, string> = {
+  studio: "https://otimabusedancestudio.com/",
+};
